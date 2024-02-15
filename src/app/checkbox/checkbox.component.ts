@@ -1,3 +1,5 @@
+// checkbox.component.ts
+
 import { Component, HostListener } from '@angular/core';
 
 @Component({
@@ -34,23 +36,19 @@ export class CheckboxComponent {
 
     const currentScrollY = window.scrollY;
 
+    // Check if the user has fully encountered the entire checkbox section and continues to scroll down
     if (
       checkboxPosition &&
       checkboxPosition.top >= 0 &&
       checkboxPosition.bottom <= window.innerHeight &&
       currentScrollY > this.lastScrollY
     ) {
-      this.showSubscribeMessage = !this.isCheckboxChecked();
+      this.showSubscribeMessage =
+        currentScrollY > checkboxPosition.top + checkboxPosition.height;
     } else {
       this.showSubscribeMessage = false;
     }
-    this.lastScrollY = currentScrollY;
-  }
 
-  private isCheckboxChecked(): boolean {
-    const checkboxElement = document.getElementById(
-      'check-pos'
-    ) as HTMLInputElement;
-    return checkboxElement ? checkboxElement.checked : false;
+    this.lastScrollY = currentScrollY;
   }
 }
