@@ -1,11 +1,16 @@
+<!-- checkbox.component.html -->
+
 <div class="scrollable-content">
     <h2>Subscribe to our daily events</h2>
     <p>We'd like you to be a part of our program</p>
-    <p>Please click on the checkbox to get ourself subscribed</p>
+    <p>Please click on the checkbox to get yourself subscribed</p>
 
     <div class="checkbox-group">
-        <input type="checkbox" id="check-pos" name="scrollCheckbox">
-        <label for="scrollCheckbox" class="tnc">I agree to the terms and conditions.</label>
+        <input type="checkbox" id="check-pos" name="scrollCheckbox" (change)="onCheckboxChange($event)">
+        <label for="check-pos" class="tnc">I agree to the terms and conditions.</label>
+    </div>
+    <div *ngIf="showSubscribeMessage" class="subscribe-message">
+        <p>Please subscribe to our program.</p>
     </div>
 
 </div>
