@@ -1,5 +1,3 @@
-// checkbox.component.ts
-
 import { Component, HostListener } from '@angular/core';
 
 @Component({
@@ -9,10 +7,10 @@ import { Component, HostListener } from '@angular/core';
 })
 export class CheckboxComponent {
   showSubscribeMessage = false;
-  hasScrolledDown = false;
+  lastScrollY = 0;
 
   @HostListener('window:scroll', ['$event'])
-  onScroll() {
+  onScroll(event: Event) {
     this.checkScroll();
   }
 
@@ -34,20 +32,19 @@ export class CheckboxComponent {
       ? checkboxElement.getBoundingClientRect()
       : null;
 
-    if (window.scrollY > (checkboxPosition?.top || 0)) {
-      this.hasScrolledDown = true;
-    }
+    const currentScrollY = window.scrollY;
 
     if (
-      this.hasScrolledDown &&
       checkboxPosition &&
       checkboxPosition.top >= 0 &&
-      checkboxPosition.bottom <= window.innerHeight
+      checkboxPosition.bottom <= window.innerHeight &&
+      currentScrollY > this.lastScrollY
     ) {
       this.showSubscribeMessage = !this.isCheckboxChecked();
     } else {
       this.showSubscribeMessage = false;
     }
+    this.lastScrollY = currentScrollY;
   }
 
   private isCheckboxChecked(): boolean {
