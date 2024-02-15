@@ -1,0 +1,24 @@
+.scrollable-content {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #f9e4e4;
+}
+
+#check-pos {
+  margin-left: -19rem;
+  display: inline;
+  /* display: flex; */
+}
+
+.checkbox-group {
+  margin-top: 15px;
+  display: flex;
+  align-items: flex-start;
+}
+.tnc {
+  margin-left: -19rem;
+}
