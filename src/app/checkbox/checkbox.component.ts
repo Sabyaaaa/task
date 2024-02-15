@@ -1,5 +1,3 @@
-// checkbox.component.ts
-
 import { Component, HostListener } from '@angular/core';
 
 @Component({
@@ -35,8 +33,6 @@ export class CheckboxComponent {
       : null;
 
     const currentScrollY = window.scrollY;
-
-    // Check if the user has fully encountered the entire checkbox section and continues to scroll down
     if (
       checkboxPosition &&
       checkboxPosition.top >= 0 &&
